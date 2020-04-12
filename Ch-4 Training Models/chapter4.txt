@@ -4,8 +4,8 @@ Two different ways to train a Linear Regression model:
   2. Using an iterative optimization approach called Gradient Descent(GD) that gradually tweaks the 
      model parameters to minimize the cost function over the training set. We will look at a few
      variants of Gradient Descent : Batch GD, Mini-batch GD, and Stochastic GD.
+  The Second way is better suited for cases where there are a large number of features or
+  too many training instances to fit in memory.
 
-Next we will look at Polynomial Regression, a more complex model that can fit nonlinear datasets.
-Since this model has more parameters than Linear Regression, it is more prone to overfitting the 
-training set.
+Next we will look at Polynomial Regression, a more complex model that can fit nonlinear datasets. Since this model has more parameters  Linear Regression, it is more prone to overfitting the training set.
 
