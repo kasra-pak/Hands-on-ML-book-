@@ -4,8 +4,32 @@ Two different ways to train a Linear Regression model:
   2. Using an iterative optimization approach called Gradient Descent(GD) that gradually tweaks the 
      model parameters to minimize the cost function over the training set. We will look at a few
      variants of Gradient Descent : Batch GD, Mini-batch GD, and Stochastic GD.
-  The Second way is better suited for cases where there are a large number of features or
-  too many training instances to fit in memory.
 
-Next we will look at Polynomial Regression, a more complex model that can fit nonlinear datasets. Since this model has more parameters  Linear Regression, it is more prone to overfitting the training set.
+The Second way is better suited for cases where there are a large number of features or too many
+training instances to fit in memory.
 
+An important parameter in Gradient Descent is the size of the steps, determined by the learning rate
+hyperparameter.
+
+When using Gradient Descent, you should ensure that all features have a similar scale (e.g., using
+Scikit-Learn’s StandardScaler class), or else it will take much longer to converge.
+
+Stochastic Gradient Descent has a better chance of finding the global minimum than Batch Gradient
+Descent does.
+
+Next we will look at Polynomial Regression, a more complex model that can fit nonlinear datasets. 
+Since this model has more parameters  Linear Regression, it is more prone to overfitting the training set.
+
+Surprisingly, you can use a linear model to fit nonlinear data. A simple way to do this is to add
+powers of each feature as new features, then train a linear model on this extended set of features.
+This technique is called Polynomial Regression.
+
+How to determine the complexity of your model, whether it is overfitting or underfitting:
+  1. cross-validation
+  2. learning curves
+  
+A model's generalization error can be expressed as the sum of three different errors:
+  *Bias: is due to wrong assumptions; such as assuming that the data is linear when it is actually
+         quadratic.
+  *Variance: due to the model's excessive sensitivity to small variations in the training data.
+  *Irreducible error: due to noisiness of the data itself.
