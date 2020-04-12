@@ -33,3 +33,25 @@ A model's generalization error can be expressed as the sum of three different er
          quadratic.
   *Variance: due to the model's excessive sensitivity to small variations in the training data.
   *Irreducible error: due to noisiness of the data itself.
+
+<--Regularized Linear Models-->
+For a polynomial model the best way would be to reduce the number of polynomial degrees.
+For a linear model, regularization is typically achieved by constraining the weights of the model.
+We will look at Ridge Regression, Lasso Regression and Elastic Net.
+
+<-Ridge Regression->
+(also called Tikhonov regularization)
+a regularization term is added to the cost function. This forces the learning algorithm to not only
+fit the data but also keep the model weights as small as possible.
+
+Note that the regularization term should only be added to the cost function during training.
+Once the model is trained, you want to use the unregularized performance measure to evaluate the
+model’s performance.
+
+<-Lasso Regression->
+Least Absolute Shrinkage and Selection Operator Regression (usually simply called Lasso Regression)
+just like Ridge Regression, it adds a regularization term to the cost function, but it uses the ℓ1
+norm of the weight vector instead of half the square of the ℓ2 norm.
+
+An important characteristic of Lasso Regression is that it tends to eliminate the weights of the
+least important features (i.e., set them to zero)
