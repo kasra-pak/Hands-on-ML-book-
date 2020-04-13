@@ -82,3 +82,7 @@ a Logistic Regression model computes a weighted sum of the input features
 (plus a bias term), but instead of outputting the result directly like the Linear
 Regression model does, it outputs the logistic of the result.
 
+<--Softmax Regression-->
+The Logistic Regression model can be generalized to support multiple classes directly, without having
+to train and combine multiple binary classifiers. This is called Softmax Regression, or Multinomial
+Logistic Regression.
