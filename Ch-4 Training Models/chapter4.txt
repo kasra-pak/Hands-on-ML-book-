@@ -55,3 +55,30 @@ norm of the weight vector instead of half the square of the ℓ2 norm.
 
 An important characteristic of Lasso Regression is that it tends to eliminate the weights of the
 least important features (i.e., set them to zero)
+
+Elastic Net is a middle ground between Ridge Regression and Lasso
+Regression. The regularization term is a simple mix of both Ridge and
+Lasso’s regularization terms, and you can control the mix ratio r.
+When r=0, Elastic Net is equivalent to Ridge Regression, and when r=1,
+it is equivalent to Lasso Regression.
+
+It is almost always preferable
+to have at least a little bit of regularization, so generally you should avoid
+plain Linear Regression. Ridge is a good default, but if you suspect that only
+a few features are useful, you should prefer Lasso or Elastic Net because
+they tend to reduce the useless features’ weights down to zero.
+
+In general, Elastic Net is preferred over Lasso because Lasso may
+behave erratically when the number of features is greater than the number of
+training instances or when several features are strongly correlated.
+
+Early Stopping: a different way to regularize iterative learning algorithms
+such as Gradient Decent is to stop training as soon as the validation error
+reaches a minimum.
+
+<--Logistic Regression-->
+So how does Logistic Regression work? Just like a Linear Regression model,
+a Logistic Regression model computes a weighted sum of the input features
+(plus a bias term), but instead of outputting the result directly like the Linear
+Regression model does, it outputs the logistic of the result.
+
