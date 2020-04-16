@@ -1,1 +1,36 @@
-22
+A Support Vector Machine (SVM)
+capable of performing linear or nonlinear classification, regression, and even outlier detection.
+
+well suited for classification of complex small- or medium-sized datasets, and are sensitive to the
+feature scales.
+
+You can think of an SVM classifier as fitting the widest possible street between the classes. This is
+called large margin classification.
+
+hard margin classification: If we strictly impose that all instances must be off the street and on the
+right side.
+
+There are two main issues with hard margin classification:
+First, it only works if the data is linearly separable. Second, it is sensitive to outliers.
+
+soft margin classification: The objective is to find a good balance between keeping the street as large
+as possible and limiting the margin violations(i.e., instances that end up in the middle of the street
+or even on the wrong side).
+
+hyperparameters; while creating SVM using sklearn:
+  C: higher values lead to more margin violations
+
+Unlike Logistic Regression classifiers, SVM classifiers do not output probabilities for each class.
+
+<--Polynomial Kernel-->
+Adding polynomial features is simple to implement and can work great with all sorts of Machine
+Learning algorithms (not just SVMs). That said, at a low polynomial degree, this method cannot deal
+with very complex datasets, and with a high polynomial degree it creates a huge number of features,
+making the model too slow. Fortunately, when using SVMs you can apply an almost miraculous
+mathematical technique called the kernel trick (explained in a moment). The kernel trick makes it
+possible to get the same result as if you had added many polynomial features, even with very high-
+degree polynomials, without actually having to add them. So there is no combinatorial explosion of 
+the number of features because you don’t actually add any features. This trick is implemented by the 
+SVC class.
+  sklearn.svm.SVC(kernel="poly", degree=3, coef0=1, C=5))
+
