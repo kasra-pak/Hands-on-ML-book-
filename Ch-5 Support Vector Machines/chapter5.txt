@@ -34,3 +34,18 @@ the number of features because you don’t actually add any features. This trick
 SVC class.
   sklearn.svm.SVC(kernel="poly", degree=3, coef0=1, C=5))
 
+while using SVC first try a linear kernel (LinearSVC) and then if you had a mid-size dataset you can
+try the RBF kernel too.
+
+<--SVM Regression-->
+To use SVMs for regression the trick is to reverse the objective: instead of trying to fit the 
+largest possible street between two classes while limiting margin violations, SVM Regression tries to 
+fit as many instances as possible on the street while limiting margin violations (i.e., instances off 
+the street).
+  sklearn.svm.LinearSVR(epsilon=1.5)
+  which epsilon controls the width of the street.
+
+To tackle nonlinear regression tasks, you can use a kernelized SVM model.
+  sklearn.svm.SVR(kernel="poly", degree=2, C=100, epsilon=0.1)
+
+SVMs can also be used for outlier detection. check sklearn docs.
