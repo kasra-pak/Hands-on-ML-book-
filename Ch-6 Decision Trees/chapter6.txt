@@ -1,1 +1,17 @@
+Visualizing Decision Trees:
+  sklearn.tree.export_graphviz()
 
+sklearn uses the CART algorithm, which produces only binary trees. other algorithms such as ID3 can
+produce Decision Trees with nodes that have more than two children.
+
+Decision Trees are intuitive, and their decisions are easy to interpret. Such models are often called 
+white box models. In contrast, as we will see, Random Forests or neural networks are generally 
+considered black box models.
+
+A Decision Tree can also estimate the probability that an instance belongs to a particular class k. 
+First it traverses the tree to find the leaf node for this instance, and then it returns the ratio of 
+training instances of class k in this node.
+
+The CART algorithm works mostly the same way as earlier, except that instead of trying to split the
+training set in a way that minimizes impurity, it now tries to split the training set in a way that
+minimizes the MSE.
