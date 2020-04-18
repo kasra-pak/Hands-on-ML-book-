@@ -1,1 +1,41 @@
+Most popular Ensemble methods: bagging, boosting, stacking, Random Forrests.
 
+<--Voting Classifiers-->
+Suppose you have trained a few classifiers, each one achieving about 80% accuracy. A very simple way to 
+create an even better classifier is to aggregate the predictions of each classifier and predict the
+class that gets the most votes. This majority-vote classifier is called a hard voting classifier.
+
+If all classifiers are able to estimate class probabilities (i.e., they all have a predict_proba() 
+method), then you can tell Scikit-Learn to predict the class with the highest class probability, 
+averaged over all the individual classifiers. This is called soft voting.
+
+<--Bagging and Pasting-->
+One way to get a diverse set of classifiers is to use very different training algorithms, as just 
+discussed. Another approach is to use the same training algorithm for every predictor and train them on
+different random subsets of the training set. When sampling is performed with replacement, this method 
+is called bagging (short for bootstrap aggregating ). When sampling is performed without replacement, it 
+is called pasting.
+
+  sklearn.ensemble.BaggingClassifier(dt, n_estimators=500, max_samples=100, bootstrap=True, n_jobs=-1)
+  for bagging set bootstrap to True and for pasting set it to False.
+
+The BaggingClassifier automatically performs soft voting instead of hard voting if the base classifier
+can estimate class probabilities (i.e., if it has a predict_proba() method), which is the case with
+Decision Tree classifiers.
+
+<--Out-of-Bag Evaluation-->
+With bagging, some instances may be sampled several times for any given predictor, while others may 
+not be sampled at all. By default a BaggingClassifier samples m training instances with replacement 
+(bootstrap=True), where m is the size of the training set. This means that only about 63% of the
+training instances are sampled on average for each predictor. The remaining 37% of the training
+instances that are not sampled are called out-of-bag (oob) instances. Note that they are not the same 
+37% for all predictors.
+
+Since a predictor never sees the oob instances during training, it can be evaluated on these 
+instances, without the need for a separate validation set. You can evaluate the ensemble itself by
+averaging out the oob evaluations of each predictor.
+
+In Scikit-Learn, you can set oob_score=True when creating a BaggingClassifier to request an automatic 
+oob evaluation after training.
+
+260
