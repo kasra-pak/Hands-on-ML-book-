@@ -56,3 +56,47 @@ It is possible to make trees even more random by also using random thresholds fo
 than searching for the best possible thresholds. A forest of such extremely random trees is called an 
 Extremely Randomized Trees ensemble (or Extra-Trees for short).
   sklearn.ensemble.ExtraTreesClassifier
+
+<--Feature Importance-->
+Scikit-Learn measures a feature’s importance by looking at how much the tree nodes that use that 
+feature reduce impurity on average (across all trees in the forest). More precisely, it is a weighted 
+average, where each node’s weight is equal to the number of training samples that are associated with 
+it. Scikit-Learn computes this score automatically for each feature after training, then it scales
+the results so that the sum of all importances is equal to 1.
+
+<--Boosting-->
+Boosting (originally called hypothesis boosting) refers to any Ensemble method that can combine
+several weak learners into a strong learner. The general idea of most boosting methods is to train
+predictors sequentially, each trying to correct its predecessor. There are many boosting methods 
+available, but by far the most popular are AdaBoost (short for Adaptive Boosting) and Gradient 
+Boosting.
+
+<--AdaBoost-->
+For example, when training an AdaBoost classifier, the algorithm first trains a base classifier (such
+as a Decision Tree) and uses it to make predictions on the training set. The algorithm then increases 
+the relative weight of misclassified training instances. Then it trains a second classifier, using 
+the updated weights, and again makes predictions on the training set, updates the instance weights, 
+and so on.
+
+There is one important drawback to this sequential learning technique: it cannot be parallelized
+
+Scikit-Learn uses a multiclass version of AdaBoost called SAMME (which stands for Stagewise Additive 
+Modeling using a Multiclass Exponential loss function). When there are just two classes, SAMME is 
+equivalent to AdaBoost.
+
+<--Gradient Boosting-->
+instead of tweaking the instance weights at every iteration like AdaBoost does, this method tries to 
+fit the new predictor to the residual errors made by the previous predictor.
+
+sklearn.ensemble.GradientBoostingRegressor(max_depth=2, n_estimators=3, learning_rate=1.0
+
+The learning_rate hyperparameter scales the contribution of each tree. If you set it to a low value,
+such as 0.1, you will need more trees in the ensemble to fit the training set, but the predictions
+will usually generalize better. This is a regularization technique called shrinkage.
+
+<--Stacking-->
+Or stacked generalization
+
+It is based on a simple idea: instead of using trivial functions (such as hard voting) to aggregate 
+the predictions of all predictors in an ensemble, why don’t we train a model to perform this 
+aggregation? we call this last model blender or meta learner.
